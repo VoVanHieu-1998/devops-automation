@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:mysql://localhost:3307/identity-service?serverTimeZone=UTC&allowPublicKeyRetrieval=true}
+    username: root
+    password: ${MYSQL_ROOT_PASSWORD:root}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+      dialect: org.hibernate.dialect.MySQL8Dialect
+      format_sql: true
+  servlet:
+    multipart:
+      max-request-size: 15MB
