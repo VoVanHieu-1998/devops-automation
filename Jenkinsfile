@@ -28,7 +28,7 @@ pipeline {
                     withCredentials([usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
                         sh 'docker login -u $DOCKER_USER -p $DOCKER_PASS'
                         sh 'docker-compose -f docker-compose.yml build identity-spring-container'
-                        sh 'docker tag identity-spring-container:latest hieudocker2023/jenkins_first_project:latest'
+                        sh 'docker tag devops-automation-1_identity-spring-container:latest hieudocker2023/jenkins_first_project:latest'
                         sh 'docker push hieudocker2023/jenkins_first_project:latest'
                         sh 'docker logout'
                     }
