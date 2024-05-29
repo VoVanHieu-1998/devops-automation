@@ -49,6 +49,7 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<finalName>deploy-app</finalName>
 	</build>
 
 </project>
