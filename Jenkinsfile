@@ -11,19 +11,12 @@ pipeline {
     }
 
     stages {
-        stage('Build') {
-            steps {
-                checkout scmGit(branches: [[name: '*/develop']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/VoVanHieu-1998/devops-automation']])
-                sh 'mvn clean install'
-            }
-        }
-        stage('Login to Docker Hub') {
-            steps {
-                withCredentials([usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
-                    sh 'docker login -u $DOCKER_USER -p $DOCKER_PASS'
-                }
-            }
-        }
+//         stage('Build') {
+//             steps {
+//                 checkout scmGit(branches: [[name: '*/develop']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/VoVanHieu-1998/devops-automation']])
+//                 sh 'mvn clean install'
+//             }
+//         }
         stage('Read Config') {
             steps {
                 script {
