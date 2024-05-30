@@ -18,6 +18,7 @@ pipeline {
         stage('Set environment variables') {
             steps {
                 script {
+                    sh 'chmod +x ./load_env.sh'
                     sh './load_env.sh'
                     echo "DOCKER_COMPOSE_VERSION is set to: ${env.DOCKER_COMPOSE_VERSION}"
                 }
