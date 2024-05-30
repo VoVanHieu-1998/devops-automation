@@ -15,6 +15,14 @@ pipeline {
                 sh 'mvn clean install'
             }
         }
+        stage('Set environment variables') {
+            steps {
+                script {
+                    sh './load_env.sh'
+                    echo "DOCKER_COMPOSE_VERSION is set to: ${env.DOCKER_COMPOSE_VERSION}"
+                }
+            }
+        }
         stage('Login to Docker Hub') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
