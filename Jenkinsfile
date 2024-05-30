@@ -15,20 +15,6 @@ pipeline {
                 sh 'mvn clean install'
             }
         }
-        stage('Set environment variables') {
-                    steps {
-                        script {
-                            // Cấp quyền thực thi cho script
-                            sh 'chmod +x ./load_env.sh'
-
-                            // Nạp biến môi trường từ file .env
-                            sh './load_env.sh'
-
-                            // Kiểm tra các biến môi trường
-                            sh 'echo "DOCKER_COMPOSE_VERSION=$DOCKER_COMPOSE_VERSION"'
-                        }
-                    }
-                }
         stage('Login to Docker Hub') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
@@ -41,7 +27,7 @@ pipeline {
                 script {
                     withCredentials([usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
                         sh 'docker login -u $DOCKER_USER -p $DOCKER_PASS'
-                        sh 'docker-compose -f docker-compose.yml build identity-spring-container'
+                        sh 'docker-compose -f docker-compose.yml .env build identity-spring-container'
                         sh 'docker tag devops-automation-1_identity-spring-container:latest hieudocker2023/jenkins_first_project:latest'
                         sh 'docker push hieudocker2023/jenkins_first_project:latest'
                         sh 'docker logout'
