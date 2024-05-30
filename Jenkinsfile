@@ -16,14 +16,19 @@ pipeline {
             }
         }
         stage('Set environment variables') {
-            steps {
-                script {
-                    sh 'chmod +x ./load_env.sh'
-                    sh './load_env.sh'
-                    echo "DOCKER_COMPOSE_VERSION is set to: ${env.DOCKER_COMPOSE_VERSION}"
+                    steps {
+                        script {
+                            // Cấp quyền thực thi cho script
+                            sh 'chmod +x ./load_env.sh'
+
+                            // Nạp biến môi trường từ file .env
+                            sh './load_env.sh'
+
+                            // Kiểm tra các biến môi trường
+                            sh 'echo "DOCKER_COMPOSE_VERSION=$DOCKER_COMPOSE_VERSION"'
+                        }
+                    }
                 }
-            }
-        }
         stage('Login to Docker Hub') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
