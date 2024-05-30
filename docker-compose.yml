@@ -27,6 +27,8 @@ services:
 
   identity-spring-container:
     container_name: identity-spring-container
+    env_file:
+      - .env
     build:
       context: .
       dockerfile: Dockerfile
