@@ -1,4 +1,4 @@
-version: '$DOCKER_COMPOSE_VERSION'
+version: '3.7'
 services:
   mysql8-container:
     container_name: mysql8-container
@@ -27,8 +27,6 @@ services:
 
   identity-spring-container:
     container_name: identity-spring-container
-    env_file:
-      - .env
     build:
       context: .
       dockerfile: Dockerfile
@@ -36,7 +34,7 @@ services:
       - "8099:8009"
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://mysql8-container:3306/identity-service?serverTimeZone=UTC&allowPublicKeyRetrieval=true
-      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       REDIS_HOST: redis-container
       REDIS_PORT: 6379
       KAFKA_BROKER_SERVER: kafka-broker-01
