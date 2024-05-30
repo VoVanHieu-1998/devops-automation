@@ -22,13 +22,6 @@ pipeline {
                 }
             }
         }
-        stage('Create .env File') {
-            steps {
-                script {
-                    sh 'cp .env ${WORKSPACE}/.env'
-                }
-            }
-        }
         stage('Build and Push Docker image') {
             steps {
                 script {
