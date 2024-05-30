@@ -23,7 +23,11 @@ pipeline {
                     echo "Reading config env file from: ${env.WORKSPACE}/config.yml"
                     echo "Reading config file from: ${WORKSPACE}/config.yml"
                     // Read the config.yml file
-                    def config = readYaml file: 'config.yml'
+                    // Print the content of config.yml
+                    sh 'cat /var/jenkins_home/workspace/devops-automation-1/config.yml'
+
+                    // Read the config.yml file
+                    def config = readYaml file: '/var/jenkins_home/workspace/devops-automation-1/config.yml'
 
                     // Set environment variables from config.yml
                     env.DOCKER_COMPOSE_VERSION = config.DOCKER_COMPOSE_VERSION
