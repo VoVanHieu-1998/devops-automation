@@ -22,12 +22,19 @@ pipeline {
                 }
             }
         }
+        stage('Create .env File') {
+            steps {
+                script {
+                    sh 'cp .env ${WORKSPACE}/.env'
+                }
+            }
+        }
         stage('Build and Push Docker image') {
             steps {
                 script {
                     withCredentials([usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
                         sh 'docker login -u $DOCKER_USER -p $DOCKER_PASS'
-                        sh 'docker-compose -f docker-compose.yml --env-file .env build identity-spring-container'
+                        sh 'docker-compose -f docker-compose.yml --env-file ${WORKSPACE}/.env build identity-spring-container'
                         sh 'docker tag devops-automation-1_identity-spring-container:latest hieudocker2023/jenkins_first_project:latest'
                         sh 'docker push hieudocker2023/jenkins_first_project:latest'
                         sh 'docker logout'
