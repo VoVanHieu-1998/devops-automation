@@ -28,16 +28,8 @@ pipeline {
                     // Set environment variables from config.yml
                     env.DOCKER_COMPOSE_VERSION = config.DOCKER_COMPOSE_VERSION
                     env.MYSQL_ROOT_PASSWORD = config.MYSQL_ROOT_PASSWORD
-                    echo "DOCKER_COMPOSE_VERSION no env: ${DOCKER_COMPOSE_VERSION}"
-                    echo "MYSQL_ROOT_PASSWORD no env: ${MYSQL_ROOT_PASSWORD}"
                     echo "DOCKER_COMPOSE_VERSION: ${env.DOCKER_COMPOSE_VERSION}"
                     echo "MYSQL_ROOT_PASSWORD: ${env.MYSQL_ROOT_PASSWORD}"
-
-                    // Write the .env file
-                    writeFile file: '.env', text: """\
-                    DOCKER_COMPOSE_VERSION=${env.DOCKER_COMPOSE_VERSION}
-                    MYSQL_ROOT_PASSWORD=${env.MYSQL_ROOT_PASSWORD}
-                    """
                 }
             }
         }
