@@ -1,4 +1,4 @@
-version: '3.7'
+version: '${env.DOCKER_COMPOSE_VERSION}'
 services:
   mysql8-container:
     container_name: mysql8-container
