@@ -26,7 +26,7 @@ services:
       - app-network
 
   identity-spring-container:
-    container_name: identity-spring-container
+    container_name: ${IMAGE_NAME}
     build:
       context: .
       dockerfile: Dockerfile
