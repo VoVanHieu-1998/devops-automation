@@ -40,8 +40,10 @@ pipeline {
                     // Load the environment variables from the temporary .env file
                     script {
                         def parsedEnv = readFile('parsed_env').trim().split('\n')
+                        echo "Content of .parsedEnv file:\n${parsedEnv}"
                         parsedEnv.each { line ->
                             def parts = line.split('=')
+                            echo "Content of .parsedEnv file:\n${parts}"
                             env[parts[0]] = parts[1]
                         }
                     }
