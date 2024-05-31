@@ -1,4 +1,4 @@
-version: ${DOCKER_COMPOSE_VERSION}
+version: "${DOCKER_COMPOSE_VERSION}"
 services:
   mysql8-container:
     container_name: mysql8-container
