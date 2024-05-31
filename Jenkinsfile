@@ -17,6 +17,12 @@ pipeline {
                 }
             }
         }
+        stage('Build') {
+            steps {
+                checkout scmGit(branches: [[name: '*/develop']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/VoVanHieu-1998/devops-automation']])
+                sh 'mvn clean install'
+            }
+        }
         stage('Read .env') {
             steps {
                 script {
