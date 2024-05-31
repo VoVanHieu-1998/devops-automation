@@ -43,8 +43,14 @@ pipeline {
                         echo "Content of .parsedEnv file:\n${parsedEnv}"
                         parsedEnv.each { line ->
                             def parts = line.split('=')
-                            echo "Content of .parsedEnv file:\n${parts}"
+                            echo "Content of .parts file:\n${parts}"
                             env[parts[0]] = parts[1]
+                            def key = parts[0].trim()
+                            def value = parts[1].trim()
+                            // Set environment variable
+                            sh "export ${key}=${value}"
+                            // Echo the environment variable
+                            echo "${key}: ${value}"
                         }
                     }
 
