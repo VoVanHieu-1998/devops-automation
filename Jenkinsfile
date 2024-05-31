@@ -6,8 +6,6 @@ pipeline {
     environment {
         DOCKER_HOME = tool name: 'myDockerJenkins', type: 'org.jenkinsci.plugins.docker.commons.tools.DockerTool'
         PATH = "${DOCKER_HOME}/bin:${env.PATH}"
-        DOCKER_COMPOSE_VERSION = ''
-        MYSQL_ROOT_PASSWORD = ''
     }
 
     stages {
