@@ -31,7 +31,7 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - ${PORT_APP}
+      - "8099:8009"
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://mysql8-container:3306/identity-service?serverTimeZone=UTC&allowPublicKeyRetrieval=true
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
