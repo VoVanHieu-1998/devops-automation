@@ -55,8 +55,8 @@ pipeline {
                     }
 
                     // Echo the specific environment variables to verify
-                    echo "DOCKER_COMPOSE_VERSION: ${env.DOCKER_COMPOSE_VERSION}"
-                    echo "MYSQL_ROOT_PASSWORD: ${env.MYSQL_ROOT_PASSWORD}"
+                    echo "DOCKER_COMPOSE_VERSION: ${DOCKER_COMPOSE_VERSION}"
+                    echo "MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}"
                 }
             }
         }
