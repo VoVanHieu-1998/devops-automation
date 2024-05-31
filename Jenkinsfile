@@ -26,16 +26,23 @@ pipeline {
                     // Print content of .env file
                     echo "Content of .env file:\n${envFile}"
 
-                    // Parse .env file and set environment variables
-                    envFile.split("\n").each { line ->
+                    // Parse .env file and create environment variables
+                    def envVars = envFile.split("\n").collect { line ->
                         def parts = line.split('=')
                         if (parts.length == 2) {
-                            def key = parts[0].trim()
-                            def value = parts[1].trim()
-                            // Set environment variable
-                            env[key] = value
-                            // Echo the environment variable
-                            echo "${key}: ${value}"
+                            return "${parts[0].trim()}=${parts[1].trim()}"
+                        }
+                    }.join('\n')
+
+                    // Write parsed environment variables to a temporary .env file
+                    writeFile file: 'parsed_env', text: envVars
+
+                    // Load the environment variables from the temporary .env file
+                    script {
+                        def parsedEnv = readFile('parsed_env').trim().split('\n')
+                        parsedEnv.each { line ->
+                            def parts = line.split('=')
+                            env[parts[0]] = parts[1]
                         }
                     }
 
