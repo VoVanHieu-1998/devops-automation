@@ -27,16 +27,16 @@ pipeline {
                     echo "Content of .env file:\n${envFile}"
 
                     // Parse .env file
-                    envFile.split("\n").each { line ->
-                        def parts = line.split('=')
-                        if (parts.length == 2) {
-                            env[parts[0].trim()] = parts[1].trim()
-                        }
-                    }
+//                     envFile.split("\n").each { line ->
+//                         def parts = line.split('=')
+//                         if (parts.length == 2) {
+//                             env[parts[0].trim()] = parts[1].trim()
+//                         }
+//                     }
 
                     // Echo the environment variables
-                    echo "DOCKER_COMPOSE_VERSION: ${env.DOCKER_COMPOSE_VERSION}"
-                    echo "MYSQL_ROOT_PASSWORD: ${env.MYSQL_ROOT_PASSWORD}"
+                    echo "DOCKER_COMPOSE_VERSION: ${envFile.DOCKER_COMPOSE_VERSION}"
+                    echo "MYSQL_ROOT_PASSWORD: ${envFile.MYSQL_ROOT_PASSWORD}"
                 }
             }
         }
