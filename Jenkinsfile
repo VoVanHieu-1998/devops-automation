@@ -17,6 +17,29 @@ pipeline {
 //                 sh 'mvn clean install'
 //             }
 //         }
+        stage('Read .env') {
+            steps {
+                script {
+                    // Read .env file
+                    def envFile = readFile '.env'
+
+                    // Print content of .env file
+                    echo "Content of .env file:\n${envFile}"
+
+                    // Parse .env file
+                    envFile.split("\n").each { line ->
+                        def parts = line.split('=')
+                        if (parts.length == 2) {
+                            env[parts[0].trim()] = parts[1].trim()
+                        }
+                    }
+
+                    // Echo the environment variables
+                    echo "DOCKER_COMPOSE_VERSION: ${env.DOCKER_COMPOSE_VERSION}"
+                    echo "MYSQL_ROOT_PASSWORD: ${env.MYSQL_ROOT_PASSWORD}"
+                }
+            }
+        }
         stage('Read Config') {
             steps {
                 script {
