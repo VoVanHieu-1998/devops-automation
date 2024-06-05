@@ -19,7 +19,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 
 @Configuration
-@EnableMirageRepositories(basePackages = "com.devops.deploy_app.repository", sqlManagerRef = "sqlManagerService")
+@EnableMirageRepositories(basePackages = "com.**.repository", sqlManagerRef = "sqlManagerService")
 public class MirageConfig {
 
     @Autowired

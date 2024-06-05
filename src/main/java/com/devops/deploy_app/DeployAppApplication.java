@@ -9,8 +9,8 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.ComponentScans;
 
 @SpringBootApplication
-@ConfigurationPropertiesScan("com.devops.deploy_app")
-@ComponentScan(basePackages = "com.devops.deploy_app")
+@ConfigurationPropertiesScan("com")
+@ComponentScan(basePackages = "com")
 public class DeployAppApplication extends SpringBootServletInitializer {
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {

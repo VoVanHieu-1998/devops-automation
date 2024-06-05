@@ -28,7 +28,7 @@ public class DbLoggingAspect {
     /**
      * Pointcut that matches all Spring beans in the application's main packages.
      */
-    @Pointcut("execution(* com.devops.deploy_app.repository.*.*(..))")
+    @Pointcut("execution(* com.*.repository.*.*(..))")
     public void applicationPackagePointcut() {
         // Method is empty as this is just a Pointcut, the implementations are in the advices.
     }
