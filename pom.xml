@@ -15,13 +15,47 @@
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>17</java.version>
+		<jwt.version>0.11.5</jwt.version>
+		<mirage.version>2.1.2</mirage.version>
+		<main.basedir>${project.basedir}</main.basedir>
+		<spring-data-mirage.version>3.0.0.RELEASE</spring-data-mirage.version>
+		<spar-wings-spring-data-chunk.version>0.38</spar-wings-spring-data-chunk.version>
+		<spring.boot.version>3.2.4</spring.boot.version>
+		<spring.orm.version>6.1.3</spring.orm.version>
 	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
+			<artifactId>spring-boot-starter-jdbc</artifactId>
+			<version>3.2.2</version>
+		</dependency>
+		<dependency>
+			<groupId>jp.xet.springframework.data.mirage</groupId>
+			<artifactId>spring-data-mirage-customize</artifactId>
+			<version>${spring-data-mirage.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>jp.xet.spar-wings</groupId>
+			<artifactId>spar-wings-spring-data-chunk</artifactId>
+			<version>${spar-wings-spring-data-chunk.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.miragesql</groupId>
+			<artifactId>miragesql</artifactId>
+			<version>${mirage.version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.miragesql</groupId>
+			<artifactId>miragesql-integration</artifactId>
+			<version>${mirage.version}</version>
+			<scope>compile</scope>
 		</dependency>
 
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
@@ -32,10 +66,31 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>com.oracle.database.jdbc</groupId>-->
+<!--			<artifactId>ojdbc8</artifactId>-->
+<!--			<scope>provided</scope>-->
+<!--		</dependency>-->
+		<!--postgresql-->
 		<dependency>
-			<groupId>com.mysql</groupId>
-			<artifactId>mysql-connector-j</artifactId>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
 			<scope>runtime</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.12.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-aop</artifactId>
+		</dependency>
+		<!-- AspectJ -->
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
 		</dependency>
 	</dependencies>
 
@@ -54,7 +109,13 @@
 				</configuration>
 			</plugin>
 		</plugins>
-		<finalName>deploy-app</finalName>
 	</build>
+	<repositories>
+		<repository>
+			<id>local-repository</id>
+			<name>Local Repository</name>
+			<url>file://${main.basedir}/repository</url>
+		</repository>
+	</repositories>
 
 </project>

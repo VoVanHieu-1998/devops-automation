@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.miragesql</groupId>
+		<artifactId>miragesql-parent</artifactId>
+		<version>3.0.0</version>
+	</parent>
+	<artifactId>miragesql-integration</artifactId>
+	<name>Mirage-SQL Integration</name>
+	<description>Mirage-SQL Integration is an easy way to integrate Mirage-SQL
+		with Spring, Guice or Seasar2</description>
+	<url>https://github.com/mirage-sql/mirage</url>
+	<organization>
+		<name>Mirage-SQL</name>
+		<url>https://github.com/mirage-sql/</url>
+	</organization>
+	<licenses>
+		<license>
+			<name>The Apache License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+		</license>
+	</licenses>
+	<developers>
+		<developer>
+			<id>takezoe</id>
+			<name>Naoki Takezoe</name>
+			<email>takezoe_at_gmail.com</email>
+			<url>http://d.hatena.ne.jp/takezoe/</url>
+			<timezone>+9</timezone>
+		</developer>
+		<developer>
+			<id>daisuke</id>
+			<name>Daisuke Miyamoto</name>
+			<email>dai.0304_at_gmail.com</email>
+			<url>http://d.hatena.ne.jp/daisuke-m/</url>
+			<timezone>+9</timezone>
+		</developer>
+		<developer>
+			<id>aadrian</id>
+			<name>Adrian A.</name>
+			<email>a.adrian.tech_at_gmail.com</email>
+			<url>https://github.com/aadrian</url>
+			<timezone>+1</timezone>
+		</developer>
+	</developers>
+	<scm>
+		<connection>scm:git:https://github.com/mirage-sql/mirage.git</connection>
+		<developerConnection>scm:git:https://github.com/mirage-sql/mirage.git</developerConnection>
+		<url>https://github.com/mirage-sql/mirage</url>
+	</scm>
+	<issueManagement>
+		<system>GitHub Issues</system>
+		<url>https://github.com/mirage-sql/mirage/issues</url>
+	</issueManagement>
+	<dependencies>
+		<dependency>
+			<groupId>jakarta.transaction</groupId>
+			<artifactId>jakarta.transaction-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.miragesql</groupId>
+			<artifactId>miragesql</artifactId>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.miragesql</groupId>
+			<artifactId>miragesql-test</artifactId>
+		</dependency>
+	
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-dbcp2</artifactId>
+			<scope>compile</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>com.zaxxer</groupId>
+			<artifactId>HikariCP</artifactId>
+			<scope>compile</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<scope>compile</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<scope>compile</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<scope>compile</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>com.google.inject</groupId>
+			<artifactId>guice</artifactId>
+			<version>5.0.1</version>
+			<scope>compile</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>cglib</groupId>
+			<artifactId>cglib</artifactId>
+			<version>3.3.0</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.hsqldb</groupId>
+			<artifactId>hsqldb</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aop</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+</project>

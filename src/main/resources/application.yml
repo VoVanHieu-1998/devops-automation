@@ -1,17 +1,26 @@
 spring:
   datasource:
-    url: ${SPRING_DATASOURCE_URL:jdbc:mysql://localhost:3307/identity-service?serverTimeZone=UTC&allowPublicKeyRetrieval=true}
-    username: root
-    password: ${MYSQL_ROOT_PASSWORD:root}
-    driver-class-name: com.mysql.cj.jdbc.Driver
-  jpa:
-    show-sql: true
-    hibernate:
-      ddl-auto: update
-    properties:
-      hibernate:
-      dialect: org.hibernate.dialect.MySQL8Dialect
-      format_sql: true
+#    type: com.zaxxer.hikari.HikariDataSource
+#    driver-class-name: oracle.jdbc.OracleDriver
+#    url: ${DB_URL:jdbc:oracle:thin:@14.161.47.48:30505:CDB1}
+#    username: ${DB_USERNAME:SA01Y23TTQT_DEV}
+#    password: ${DB_PASSWORD:U0EwMVkyM1RUUVRAIzIwMjM}
+
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: org.postgresql.Driver
+    url: ${DB_URL:jdbc:postgresql://192.168.11.2:5432/fe04y24_dev}
+    username: ${DB_USERNAME:fe04y24_dev}
+    password: ${DB_PASSWORD:ic[Pp!,(xG0yt&J}
+
+    hikari:
+      poolName: ${DB_POOL_NAME:${spring.application.name}}
+      auto-commit: true
+      register-mbeans: true
+      idle-timeout: 600000
+      minimum-idle: ${DB_CONN_MINIDLE:10}
+      maximum-pool-size: ${DB_CONN_MAXACTIVE:100}
+      connection-timeout: 30000
+      max-lifetime: 1800000
   servlet:
     multipart:
       max-request-size: 15MB
